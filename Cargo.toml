@@ -3,6 +3,13 @@ name = "rustem_proxy"
 authors = ["Alexander Prokopenko <uaquax@gmail.com>"]
 description = "A rust library to set system proxy on different operating systems"
 version = "0.1.0"
+documentation = "https://docs.rs/rustem_proxy"
+homepage = "https://github.com/uaquax/rustem_proxy"
+repository = "https://github.com/uaquax/rustem_proxy"
+license = "GPL 3.0"
+license-file = "LICENSE"
+keywords = ["systemproxy", "proxy"]
+readme = "README.md"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
