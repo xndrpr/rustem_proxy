@@ -6,7 +6,6 @@ version = "0.1.0"
 documentation = "https://docs.rs/rustem_proxy"
 homepage = "https://github.com/uaquax/rustem_proxy"
 repository = "https://github.com/uaquax/rustem_proxy"
-license = "GPL 3.0"
 license-file = "LICENSE"
 keywords = ["systemproxy", "proxy"]
 readme = "README.md"
