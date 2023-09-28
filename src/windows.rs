@@ -1,4 +1,4 @@
-use crate::SystemProxy;
+use crate::{Protocol, SystemProxy};
 use std::{net::SocketAddr, str::FromStr};
 use winapi::shared::ntdef::NULL;
 use winapi::um::wininet::{
@@ -37,6 +37,7 @@ impl SystemProxy {
             host: host,
             port: port,
             bypass: bypass,
+            protocol: Protocol::ALL,
         }
     }
 

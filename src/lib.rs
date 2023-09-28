@@ -8,6 +8,7 @@ pub enum Protocol {
     HTTP,
     HTTPS,
     SOCKS,
+    ALL,
 }
 pub struct SystemProxy {
     pub is_enabled: bool,
