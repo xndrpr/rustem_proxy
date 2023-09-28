@@ -66,4 +66,30 @@ impl SystemProxy {
             InternetSetOptionA(NULL, INTERNET_OPTION_REFRESH, NULL, 0);
         }
     }
+
+    pub fn unset(proxy: SystemProxy) {
+        let hkcu = RegKey::predef(enums::HKEY_CURRENT_USER);
+        let cur_var = hkcu
+            .open_subkey_with_flags(SUB_KEY, enums::KEY_SET_VALUE)
+            .expect("ERROR: Could not open subkey with flags");
+
+        let enable = 0u32;
+        let server = format!("{}:{}", proxy.host, proxy.port);
+        let bypass = proxy.bypass.as_str();
+
+        cur_var
+            .set_value("ProxyEnable", &enable)
+            .expect("ERROR: Could not set value ProxyEnable");
+        cur_var
+            .set_value("ProxyServer", &server)
+            .expect("ERROR: Could not set value ProxyServer");
+        cur_var
+            .set_value("ProxyOverride", &bypass)
+            .expect("ERROR: Could not set value ProxyOverride");
+
+        unsafe {
+            InternetSetOptionA(NULL, INTERNET_OPTION_SETTINGS_CHANGED, NULL, 0);
+            InternetSetOptionA(NULL, INTERNET_OPTION_REFRESH, NULL, 0);
+        }
+    }
 }
