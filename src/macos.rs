@@ -28,6 +28,7 @@ fn set4protocol(proxy: &SystemProxy, service: String) {
         Protocol::HTTP => "webproxy".to_string(),
         Protocol::HTTPS => "securewebproxy".to_string(),
         Protocol::SOCKS => "socksfirewallproxy".to_string(),
+        Protocol::ALL => "".to_string(),
     };
 
     let _ = networksetup()
@@ -45,6 +46,7 @@ fn reset4protocol(proxy: &SystemProxy, service: String) {
         Protocol::HTTP => "webproxy".to_string(),
         Protocol::HTTPS => "securewebproxy".to_string(),
         Protocol::SOCKS => "socksfirewallproxy".to_string(),
+        Protocol::ALL => "".to_string(),
     };
 
     let _ = networksetup()
