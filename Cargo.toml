@@ -1,5 +1,6 @@
 [package]
 name = "rustem_proxy"
+authors = ["Alexander Prokopenko <uaquax@gmail.com>"]
 description = "A rust library to set system proxy on different operating systems"
 version = "0.1.0"
 edition = "2021"
