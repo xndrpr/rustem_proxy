@@ -60,6 +60,8 @@ fn reset4protocol(proxy: &SystemProxy, service: String) {
 
 impl SystemProxy {
     pub fn get() -> SystemProxy {
+        // TODO
+
         SystemProxy {
             is_enabled: true,
             host: "".to_string(),
