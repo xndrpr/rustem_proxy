@@ -41,23 +41,6 @@ fn set4protocol(proxy: &SystemProxy, service: String) {
         .output();
 }
 
-fn reset4protocol(proxy: &SystemProxy, service: String) {
-    let string_protocol = match proxy.protocol {
-        Protocol::HTTP => "webproxy".to_string(),
-        Protocol::HTTPS => "securewebproxy".to_string(),
-        Protocol::SOCKS => "socksfirewallproxy".to_string(),
-        Protocol::ALL => "".to_string(),
-    };
-
-    let _ = networksetup()
-        .args([
-            format!("-set{}state", string_protocol),
-            service,
-            "off".to_string(),
-        ])
-        .output();
-}
-
 impl SystemProxy {
     pub fn get() -> SystemProxy {
         // TODO
@@ -79,11 +62,29 @@ impl SystemProxy {
         }
     }
 
-    pub fn unset(proxy: SystemProxy) {
+    pub fn unset() {
         let services = get_services();
 
-        for service in services {
-            reset4protocol(&proxy, service.to_string());
-        }
+        let _ = networksetup()
+            .args([
+                format!("-setwebproxystate", string_protocol),
+                service,
+                "off".to_string(),
+            ])
+            .output();
+        let _ = networksetup()
+            .args([
+                format!("-setsecurewebproxystate", string_protocol),
+                service,
+                "off".to_string(),
+            ])
+            .output();
+        let _ = networksetup()
+            .args([
+                format!("-setsocksfirewallproxystate", string_protocol),
+                service,
+                "off".to_string(),
+            ])
+            .output();
     }
 }

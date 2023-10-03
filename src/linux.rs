@@ -45,8 +45,8 @@ impl SystemProxy {
             .expect("ERROR: Could not set port");
     }
 
-    pub fn unset(is_enabled: bool) {
-        let mode = if is_enabled { "'manual'" } else { "'none'" };
+    pub fn unset() {
+        let mode = "'none'";
         gsettings()
             .args(["set", CMD_KEY, "mode", mode])
             .status()
