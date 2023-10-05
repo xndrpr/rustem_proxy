@@ -43,6 +43,10 @@ impl SystemProxy {
             .args(["set", schema, "port", port])
             .status()
             .expect("ERROR: Could not set port");
+        gsettings()
+            .args(["set", CMD_KEY, "mode", "manual"])
+            .status()
+            .expect("ERROR: Could not unset proxy");
     }
 
     pub fn unset() {

@@ -2,7 +2,7 @@
 name = "rustem_proxy"
 authors = ["Alexander Prokopenko <uaquax@gmail.com>"]
 description = "A rust library to set system proxy on different operating systems"
-version = "0.1.3"
+version = "0.1.4"
 documentation = "https://docs.rs/rustem_proxy"
 homepage = "https://github.com/uaquax/rustem_proxy"
 repository = "https://github.com/uaquax/rustem_proxy"
