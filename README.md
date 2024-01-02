@@ -2,7 +2,13 @@
 
 ## Usage
 
-Example:
+Supported Platforms:
+
+- Windows
+- Macos
+- Linux (Gnome only)
+
+Examples:
 
 ```rust
 use rustem_proxy::SystemProxy;
@@ -14,4 +20,8 @@ SystemProxy::set(SystemProxy {
     bypass: "".to_string(),
     protocol: rustem_proxy::Protocol::HTTP,
 });
+```
+
+```rust
+SystemProxy::unset();
 ```
