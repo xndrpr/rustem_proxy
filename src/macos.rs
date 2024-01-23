@@ -65,26 +65,28 @@ impl SystemProxy {
     pub fn unset() {
         let services = get_services();
 
-        let _ = networksetup()
-            .args([
-                format!("-setwebproxystate", string_protocol),
-                service,
-                "off".to_string(),
-            ])
-            .output();
-        let _ = networksetup()
-            .args([
-                format!("-setsecurewebproxystate", string_protocol),
-                service,
-                "off".to_string(),
-            ])
-            .output();
-        let _ = networksetup()
-            .args([
-                format!("-setsocksfirewallproxystate", string_protocol),
-                service,
-                "off".to_string(),
-            ])
-            .output();
+        for service in &services {
+            let _ = networksetup()
+                .args([
+                    format!("-setwebproxystate"),
+                    service.clone(),
+                    "off".to_string(),
+                ])
+                .output();
+            let _ = networksetup()
+                .args([
+                    format!("-setsecurewebproxystate"),
+                    service.clone(),
+                    "off".to_string(),
+                ])
+                .output();
+            let _ = networksetup()
+                .args([
+                    format!("-setsocksfirewallproxystate"),
+                    service.clone(),
+                    "off".to_string(),
+                ])
+                .output();
+        }
     }
 }
